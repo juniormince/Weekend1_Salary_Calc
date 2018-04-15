@@ -5,7 +5,9 @@ $(document).ready(onReady);
 function onReady()  {
     console.log('jquery checkarino');
     $('button').on('click', clickHandler);
-
+    $('#blankRow').append(
+    '<td colspan="5">' + '</td>'
+    );
 }
 
 function clickHandler() {
