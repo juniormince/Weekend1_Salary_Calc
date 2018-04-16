@@ -21,13 +21,21 @@ h1  {
     background: darkgray;
 }
 
+#totalMonthly   {
+    float: right;
+    padding-right: 350px;
+    font-weight: bold;
+}
+
 input   {
     border-style: solid; 
     border-width: 1px;
     margin: 3px;
 }
 button  {
-   margin-left: 15px;
+   float: right;
+   margin-right: 225px;
+   margin-top: 5px;
    border: black;
    border-style: solid;
    border-width: 2px;
@@ -56,5 +64,5 @@ tr:nth-child(even)  {
 }
 
 /* #blankRow   {
-    background: darkgrey;
+    background: #f2f2f2;
 } */
