@@ -1,7 +1,9 @@
 console.log('js check');
 
 let budget = 20000;
+let totalSalary = 0;
 let expenses = [];
+let monthlyBudget = 0;
 
 class Expense{
     constructor( firstName, lastName, idNumber, jobTitle, annualSalary ){
@@ -32,10 +34,10 @@ function clickHandler() {
     expenses.push( newBudget ); 
     //adds to total monthly hopefully
     updateMonthly();
+    clearInputs();
 } //works
 
 function addEmployee()    {
-    let totalSalary = 0;
     let tableOutput = $( '#employeeList');
     $('#employeeList').append( 
         '<tr>' +
@@ -55,48 +57,34 @@ function addEmployee()    {
     //     '<td>' + thing.salary + '</td>' +
     // '</tr>' );
     // } //forof loop test version, doesn't add vals
-    totalSalary += Number($('#annualSalary').val());
-    $('#firstName').val('');
-    $('#lastName').val('');
-    $('#idNumber').val('');
-    $('#jobTitle').val('');
-    $('#annualSalary').val('');
+    // totalSalary += Number($('#annualSalary').val());
     //clears inputs after submission
 } //works
 
-function updateMonthly( totalSalary )    { //gotta give
+function updateMonthly()    {
     //update totalMonthly 
-    let remainingBudget = budget - totalSalary ;
-    remainingBudget = Number(remainingBudget);
-    console.log( 'remaining: ', remainingBudget);
+    // let remainingBudget = monthlyBudget - Number($('#annualSalary').val(''))/2; // test, NaN return happening
+    monthlyBudget += Number($('#annualSalary').val())/12;
+    //**remember to divide by 12 once fixed **/
+    // remainingBudget = Number(remainingBudget); //NaN  
     let totalMonthly = $('#totalMonthly');
-    totalMonthly.append( '<h2>Total Monthly: $' + Number(remainingBudget).toFixed(2) + '<h2/>');
-    if( remainingBudget > 20000 ){
-        totalMonthly.css('background', 'red' );
+    totalMonthly.empty();
+    totalMonthly.append( '<h2>Total Monthly: $' + monthlyBudget.toFixed(2) + '<h2/>');
+    if( monthlyBudget > 20000 ){
+        totalMonthly.css('background', 'red' ); //might work after NaN fix
     }
 
-    // for ( pay of expenses ) {
-    //     totalMonthly.append( '<h2>Total Monthly: $' + Number($('#annualSalary').val()).toFixed(2) + '</h2>');
-    //     totalExpenses += Number($('#annualSalary').val()).toFixed(2);
-
-    console.log('total monthly errr yearly test:', totalMonthly);
+    console.log('total monthly errr yearly test:', monthlyBudget);
     }
     // $('#totalMonthly').append( '<h2>Total Monthly: ' + Number($('#annualSalary').val()).toFixed(2) + '</h2>');
     // totalExpenses += Number($('#annualSalary').val()).toFixed(2);
     //
 // } //ahahahahaha
-  
 
-
-//employee.salary rename??
-
-
-
-
-//example test run info
-
-/* '<tr>' + '<td>' + 'Jen' + '</td>'
-'<td>' + 'Barber' + '</td>'
-'<td>' + '4521' + '</td>'
-'<td>' + 'Team Lead' + '</td>'
-'<td>' + '80,000' + '</td>' + '</tr>'*/
+function clearInputs()  {
+    $('#firstName').val('');
+    $('#lastName').val('');
+    $('#idNumber').val('');
+    $('#jobTitle').val('');
+    $('#annualSalary').val('');
+}
