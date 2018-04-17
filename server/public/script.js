@@ -63,28 +63,18 @@ function addEmployee()    {
 
 function updateMonthly()    {
     //update totalMonthly 
-    // let remainingBudget = monthlyBudget - Number($('#annualSalary').val(''))/2; // test, NaN return happening
     monthlyBudget += Number($('#annualSalary').val())/12;
     //**remember to divide by 12 once fixed **/
-    // remainingBudget = Number(remainingBudget); //NaN  
     let totalMonthly = $('#totalMonthly');
     totalMonthly.empty();
     totalMonthly.append( '<h2>Total Monthly: $' + monthlyBudget.toFixed(2) + '<h2/>');
     if( monthlyBudget > 20000 ){
-        totalMonthly.css('background', 'red' ); //might work after NaN fix
+        totalMonthly.css('background', 'red' );
     }
-
     console.log('total monthly errr yearly test:', monthlyBudget);
     }
-    // $('#totalMonthly').append( '<h2>Total Monthly: ' + Number($('#annualSalary').val()).toFixed(2) + '</h2>');
-    // totalExpenses += Number($('#annualSalary').val()).toFixed(2);
-    //
 // } //ahahahahaha
 
 function clearInputs()  {
-    $('#firstName').val('');
-    $('#lastName').val('');
-    $('#idNumber').val('');
-    $('#jobTitle').val('');
-    $('#annualSalary').val('');
+    $('input').val(''); //simplified version from live solve (as opposed to naming each line of input)
 }
